@@ -1,0 +1,30 @@
+<div class="dialogue-overlay">
+    <div class="dialogue-overlay-header">
+        <div>Mitglieder</div>
+        <app-round-btn (click)="handleClose()" iconSrc="assets/icons/close.svg"
+            iconHoverSrc="assets/icons/close-purple.svg" altText="Schließen">
+        </app-round-btn>
+    </div>
+
+    <div class="dialogue-content">
+        <div class="selected-users">
+            <div class="user" *ngFor="let u of participants" (click)="handleOpenProfile(u)">
+                <div class="img-container">
+                    <img class="user-img" [src]="'assets/user-icons/' + u.img + '.svg'" alt="">
+                    <div class="online-signal" [ngClass]="u.presence"></div>
+                </div>
+                <div class="user-name">
+                    {{ u.name }}<span *ngIf="u.uid === currentUserId"> (Du)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="add-user" (click)="handleOpenAddUser()">
+            <div class="add-user-icon-box">
+                <img class="hover-icon" src="assets/icons/person_add.svg" alt="">
+                <img class="hover-icon-purple" src="assets/icons/person_add-purple.svg" alt="">
+            </div>
+            Mitglieder hinzufügen
+        </div>
+    </div>
+</div>

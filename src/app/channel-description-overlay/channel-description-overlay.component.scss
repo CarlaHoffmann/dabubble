@@ -1,0 +1,113 @@
+.dialogue-overlay {
+  position: absolute;
+  top: 0px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px;
+  background-color: #ffffff;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.2);
+  z-index: 8;
+}
+
+.dialogue-overlay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .header-left {
+    display: flex;
+    gap: 15px;
+
+    h2 {
+      margin: 0;
+    }
+  }
+}
+
+.container-box {
+  padding: 20px;
+  border: 1px solid #adb0d9;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: border 75ms ease, padding 150ms ease;
+
+  &.editing {
+    border: none;
+    padding: 0;
+    transition: border 75ms ease, padding 150ms ease;
+  }
+}
+
+.overlay-title-container {
+  .title-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    img {
+      width: 24px;
+      height: auto;
+    }
+  }
+}
+
+.edit {
+  cursor: pointer;
+  transition: font-weight ease-in 150ms;
+
+  &:hover {
+    font-weight: 700;
+  }
+}
+
+.box-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: #adb0d9;
+}
+
+.btn-leave {
+  border: none;
+  width: fit-content;
+  align-self: flex-end;
+  color: white;
+  background-color: #444df2;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-family: "Nunito";
+  cursor: pointer;
+  transition: filter 125ms ease-in-out;
+
+  &:hover {
+    filter: opacity(80%);
+  }
+}
+
+.title-content.editing,
+.description.editing {
+  border: 1px solid #adb0d9;
+  border-radius: 40px;
+  padding: 10px 15px;
+}
+
+.title-content.editing input,
+.description.editing input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  background: transparent;
+}

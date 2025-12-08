@@ -1,0 +1,222 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/shared-classes";
+
+.intro-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient($purple2, $purple3, $purple1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeOutBg 1s ease forwards;
+  animation-delay: 4.5s;
+
+  .logo-wrapper {
+    display: flex;
+    align-items: center;
+    animation: moveToCorner 1s ease forwards;
+    animation-delay: 4s;
+
+    img {
+      animation: logoShift 0.6s ease forwards;
+      animation-delay: 1s;
+    }
+
+    .text {
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: textFadeIn 0.8s ease forwards;
+      animation-delay: 1.3s;
+      white-space: nowrap;
+      font-size: 88px;
+      font-weight: 700;
+      color: #fff;
+    }
+  }
+}
+
+@keyframes logoShift {
+  to {
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes textFadeIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveToCorner {
+  to {
+    transform: translate(-40vw, -40vh) scale(0.4);
+  }
+}
+
+@keyframes fadeOutBg {
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.3;
+    background: transparent;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+.overlay-root {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 75px;
+  z-index: 2000;
+  pointer-events: auto;
+}
+
+.overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.overlay-panel {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  height: 150px;
+  background-color: $purple1;
+  color: white;
+  padding: 50px;
+  border-radius: 30px 30px 0 30px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  transform: translateX(100%);
+  opacity: 0;
+  animation: slideIn 1500ms cubic-bezier(0.2, 0.9, 0.24, 1) forwards;
+
+  div {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    h2 {
+      font-size: 36px;
+      font-weight: 700;
+    }
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  30% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.logo {
+  position: absolute;
+  top: 75px;
+  left: 75px;
+  cursor: pointer;
+}
+
+.register {
+  font-size: 18px;
+  position: absolute;
+  top: 75px;
+  right: 75px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  button {
+    padding: 10px 15px;
+    margin-left: 16px;
+    font-size: 18px;
+    color: $purple2;
+    background-color: transparent;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: box-shadow 125ms ease-in-out, color 125ms ease-in-out;
+
+    &:hover {
+      color: $purple1;
+      box-shadow: 0 0 0 1px $lightpurple;
+    }
+  }
+}
+
+.login {
+  height: 100vh;
+  background-color: $lightblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 35px 20px;
+}
+
+.login-card {
+  position: relative;
+  background-color: white;
+  max-width: 606px;
+  width: 606px;
+  padding: 40px 50px;
+  border-radius: 30px;
+}
+
+.login-card.privacy {
+  padding: 48px 56px;
+  align-items: center;
+  width: unset;
+}
+.login-card.imprint {
+  padding: 48px 56px;
+  padding-bottom: 64px;
+}
+
+.legal-links {
+  display: flex;
+  gap: 16px;
+  font-size: 18px;
+
+  a {
+    text-decoration: none;
+    color: $purple2;
+    padding: 10px 15px;
+    border-radius: 100px;
+    transition: box-shadow 125ms ease-in-out, color 125ms ease-in-out;
+
+    &:hover {
+      color: $purple1;
+      box-shadow: 0 0 0 1px $lightpurple;
+    }
+  }
+}
+
+.text {
+  position: absolute;
+  left: 150px;
+  bottom: 150px;
+}

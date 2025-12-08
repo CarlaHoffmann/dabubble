@@ -1,0 +1,13 @@
+<div class="smiley-overlay" *ngIf="active">
+  <div class="mention-item" *ngFor="let item of filteredItems; let i = index"
+    [class.active]="i === activeIndex" (click)="select(item)">
+
+    <div class="smiley">
+      <!-- <span>{{ item }}</span> -->
+      <img [src]="'assets/reaction-icons/' + item + '.svg'"
+        [alt]="item"
+        class="inline-smiley">
+    </div>
+
+  </div>
+</div>
