@@ -166,22 +166,6 @@ export class ChatsComponent implements OnInit, OnChanges {
     this.participants$.subscribe(users => {this.participants = users;});
   }
 
-  // private subscribeToChatsAndUsers(channelId: string, participants$: Observable<User[]>) {
-  //   combineLatest([
-  //     this.channelService.getChatsForChannel(channelId),
-  //     participants$
-  //   ]).pipe(
-  //     switchMap(([chats, users]) => {
-  //       if (!chats.length || !users.length) return of([]);
-  //       const enrichedChats$ = chats.map(chat => this.enrichChat(channelId, chat, users));
-  //       return forkJoin(enrichedChats$);
-  //     }),
-  //     map(chats => chats.sort((a, b) => a.time - b.time))
-  //   ).subscribe(enrichedChats => {
-  //     this.chatsSubject.next(enrichedChats);
-  //     setTimeout(() => this.scrollToBottom());
-  //   });
-  // }
   private subscribeToChatsAndUsers(channelId: string, participants$: Observable<User[]>) {
     combineLatest([
       this.channelService.getChatsForChannel(channelId),
@@ -263,40 +247,6 @@ export class ChatsComponent implements OnInit, OnChanges {
   }
   }
 
-  // private enrichChat(channelId: string, chat: Chat, users: User[]): Observable<Chat> {
-  //   const normalizedReactions: Record<string, string[]> = {};
-  //   Object.entries(chat.reactions || {}).forEach(([key, val]) => {
-  //     if (Array.isArray(val)) {
-  //       normalizedReactions[key] = val;
-  //     } else if (typeof val === 'string') {
-  //       normalizedReactions[key] = [val];
-  //     } else {
-  //       normalizedReactions[key] = [];
-  //     }
-  //   });
-
-  //   return forkJoin({
-  //     reactions: of(normalizedReactions), 
-  //     user: of(users.find(u => u.uid === chat.user)),
-  //     answers: this.channelService.getAnswersForChat(channelId, chat.id).pipe(take(1))
-  //   }).pipe(
-  //     map(({ reactions, user, answers }) => {
-  //       const isMissingUser = !user;
-  //       const enriched: Chat = {
-  //         ...chat,
-  //         userName: isMissingUser ? 'Ehemaliger Nutzer' : user.name,
-  //         userImg: isMissingUser ? 'default-user' : user.img,
-  //         isUserMissing: isMissingUser,
-  //         answersCount: answers.length,
-  //         lastAnswerTime: answers.length > 0 ? answers[answers.length - 1].time : null,
-  //         reactions: reactions,
-  //         reactionArray: this.transformReactionsToArray(reactions, users, this.currentUserId)
-  //       };
-  //       return enriched;
-  //     })
-  //   );
-  // }
-
   getChatDate(chat: any): Date | undefined {
     return chat.time ? new Date(chat.time * 1000) : undefined;
   }
@@ -308,25 +258,6 @@ export class ChatsComponent implements OnInit, OnChanges {
       d1.getDate() === d2.getDate();
   }
 
-  // getDisplayDate(date: Date | undefined): string {
-  //   if (!date) return '';
-
-  //   const today = new Date();
-  //   const yesterday = new Date();
-  //   yesterday.setDate(today.getDate() - 1);
-
-  //   if (this.isSameDate(date, today)) {
-  //     return 'Heute';
-  //   } else if (this.isSameDate(date, yesterday)) {
-  //     return 'Gestern';
-  //   } else {
-  //     return new Intl.DateTimeFormat('de-DE', {
-  //       weekday: 'long',
-  //       day: 'numeric',
-  //       month: 'long'
-  //     }).format(date);
-  //   }
-  // }
   getDisplayDate(date: Date | undefined): string {
     if (!date) return '';
     const referenceDates = this.getReferenceDates();
