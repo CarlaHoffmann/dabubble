@@ -1,0 +1,135 @@
+.dialogue-overlay {
+  position: absolute;
+  // top: 80px;
+  // right: 96px;
+  // left: 172px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 0px 6px 10px 0px rgba($color: black, $alpha: 0.2);
+  z-index: 6;
+}
+
+.dialogue-overlay-header {
+  width: 335px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.dialogue-content {
+  width: 335px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.selected-users {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.user {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 4px 20px;
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  &:hover {
+    background-color: #eceefe;
+  }
+}
+
+.img-container {
+  display: flex;
+}
+
+.user-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+}
+
+// .online-signal {
+//     width: 14px;
+//     height: 14px;
+//     border: 2px solid #ffffff;
+//     border-radius: 100%;
+//     box-sizing: border-box;
+//     position: absolute;
+//     top: 40px;
+//     left: 56px;
+// }
+
+.add-user {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 29px;
+  border-radius: 30px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #eceefe;
+    color: #535af1;
+    .hover-icon {
+      display: none;
+    }
+    .hover-icon-purple {
+      display: block;
+    }
+  }
+}
+
+.add-user-icon-box {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  background-color: #eceefe;
+}
+
+.hover-icon-purple {
+  display: none;
+}
+
+@media(max-width: 880px) {
+  .dialogue-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 16px;
+  }
+}
+
+@media(max-width: 430px) {
+  .dialogue-overlay {
+    width: 100%;
+    // border-top-right-radius: 30px;
+  }
+
+  .dialogue-overlay-header {
+    width: 100%;
+  }
+
+  .dialogue-content {
+    width: 100%;
+  }
+}

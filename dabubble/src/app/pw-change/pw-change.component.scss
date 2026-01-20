@@ -1,0 +1,32 @@
+@use "../../styles/variables" as *;
+@use "../../styles/shared-classes";
+
+.arrow-back {
+  left: 15px;
+}
+
+.input-item {
+  img {
+    filter: invert(41%) sepia(14%) saturate(15%) hue-rotate(332deg)
+      brightness(95%) contrast(93%);
+  }
+  &:has(input:focus) {
+    img {
+      filter: brightness(0);
+      transition: filter 125ms ease;
+    }
+  }
+}
+
+.input-group {
+  padding-top: 0 !important;
+}
+
+@media (max-width: 359px) {
+  .input-wrapper .error.set-pw {
+    bottom: -42px !important;
+  }
+  .input-group {
+    gap: 45px;
+  }
+}

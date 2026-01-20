@@ -1,0 +1,446 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/shared-classes";
+
+@keyframes fadeOutBg {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+@keyframes gapExpand {
+  0% {
+    gap: 0;
+  }
+  100% {
+    gap: 24px;
+  }
+}
+
+@keyframes textWidthExpand {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: auto;
+  }
+}
+
+@keyframes textSlideAndFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-420px);
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveToTopLeft {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50vw + 195px), calc(-50vh + 110px)) scale(0.38);
+    opacity: 0;
+  }
+}
+
+@keyframes moveToTopCenter {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(-50vh + 46px)) scale(0.8);
+    opacity: 0;
+  }
+}
+
+.intro-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient($purple2, $purple3, $purple1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeOutBg 500ms ease-out forwards;
+  animation-delay: 2.5s;
+
+  .logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    height: 184px;
+    position: relative;
+    animation: gapExpand 500ms ease-out forwards;
+    animation-delay: 1.5s;
+
+    img {
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    .intro-text {
+      width: 0;
+      opacity: 0;
+      font-size: 88px;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      animation:
+        textWidthExpand 500ms ease-in-out forwards,
+        textSlideAndFade 500ms ease-out forwards;
+      animation-delay: 1s, 1.5s;
+      z-index: 5;
+    }
+  }
+}
+
+.overlay-root {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 75px;
+  z-index: 2000;
+  pointer-events: auto;
+}
+
+.overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.overlay-panel {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  height: 150px;
+  background-color: $purple1;
+  color: white;
+  padding: 50px;
+  border-radius: 30px 30px 0 30px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  transform: translateX(100%);
+  opacity: 0;
+  animation: slideIn 200ms ease-out forwards;
+  animation-delay: 1.3s;
+
+  div {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    h2 {
+      font-size: 36px;
+      font-weight: 700;
+    }
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  30% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.logo {
+  position: absolute;
+  top: 75px;
+  left: 75px;
+  cursor: pointer;
+  width: 242px;
+  height: auto;
+}
+
+.register {
+  font-size: 18px;
+  position: absolute;
+  top: 75px;
+  right: 75px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  button {
+    padding: 10px 15px;
+    margin-left: 16px;
+    font-size: 18px;
+    color: $purple2;
+    background-color: transparent;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition:
+      box-shadow 125ms ease-in-out,
+      color 125ms ease-in-out;
+
+    &:hover {
+      color: $purple1;
+      box-shadow: 0 0 0 1px $lightpurple;
+    }
+  }
+}
+
+.login {
+  min-height: 100vh;
+  background-color: $lightblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 35px 20px;
+}
+
+.login.privacy {
+  img.hide-mobile {
+    top: 25px;
+    left: 43px;
+  }
+}
+
+.login-card {
+  position: relative;
+  background-color: white;
+  max-width: 606px;
+  min-width: 300px;
+  padding: 40px 50px;
+  border-radius: 30px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.08);
+}
+
+.login-card.avatar {
+  gap: 16px;
+}
+
+.login-card.privacy {
+  padding: 48px 56px;
+  align-items: center;
+  width: unset;
+  min-width: unset;
+  width: 152px;
+  height: 136px;
+}
+
+.login-card.imprint {
+  padding: 48px 56px;
+  padding-bottom: 64px;
+  width: 676px;
+  height: 469px;
+}
+
+.legal-links {
+  display: flex;
+  gap: 16px;
+  font-size: 18px;
+
+  a {
+    text-decoration: none;
+    color: $purple2;
+    padding: 10px 15px;
+    border-radius: 100px;
+    transition:
+      box-shadow 125ms ease-in-out,
+      color 125ms ease-in-out;
+
+    &:hover {
+      color: $purple1;
+      box-shadow: 0 0 0 1px $lightpurple;
+    }
+  }
+}
+
+.text {
+  position: absolute;
+  left: 150px;
+  bottom: 150px;
+}
+
+.logo-header-mobile {
+  width: 100%;
+  height: 80px;
+  display: none;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@media (min-width: 1301px) {
+  .intro-container .logo-wrapper {
+    animation:
+      gapExpand 500ms ease-out forwards,
+      moveToTopLeft 500ms ease-out forwards;
+    animation-delay: 1.5s, 2.5s;
+  }
+}
+
+@media (max-width: 1300px) {
+  .intro-container .logo-wrapper {
+    height: 70px;
+    animation:
+      gapExpand 500ms ease-out forwards,
+      moveToTopCenter 500ms ease-out forwards;
+    animation-delay: 1.5s, 2.5s;
+
+    img {
+      height: 70px;
+      width: auto;
+    }
+
+    .intro-text {
+      font-size: 29px;
+    }
+  }
+
+  .login {
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 24px;
+    padding: 20px 16px 16px;
+
+    span.text {
+      position: static;
+    }
+  }
+
+  .login.privacy {
+    gap: 64px;
+  }
+
+  .logo {
+    position: static;
+    margin: 0 auto 0 auto;
+    width: 205px;
+    height: auto;
+    transform: none;
+  }
+
+  .login-card {
+    width: 100%;
+    max-width: 480px;
+    padding: 32px 24px;
+  }
+
+  .register {
+    position: static;
+    margin: 0 auto 0 auto;
+    font-size: 16px;
+    align-items: center;
+
+    button {
+      margin-left: 0;
+      padding: 7px 18px;
+      font-weight: 700;
+      color: $purple1;
+      background-color: transparent;
+      border: 1px solid $purple2;
+      border-radius: 25px;
+      font-size: 16px;
+    }
+  }
+
+  .legal-links {
+    display: none;
+  }
+}
+
+@media (max-width: 880px) {
+  .login.privacy,
+  .login.imprint {
+    padding: 0;
+    background-color: white;
+    .logo-header-mobile {
+      display: flex;
+      padding: 15px 16px;
+      background-color: $lightblue;
+      img.logo {
+        height: 45px;
+        width: auto;
+        margin: 0;
+      }
+    }
+    img.hide-mobile {
+      display: none;
+    }
+  }
+
+  .login-card.imprint {
+    width: 400px;
+    height: 556px;
+    padding-bottom: 48px;
+    gap: 32px;
+  }
+
+  .overlay-panel {
+    height: 70px;
+    padding: 20px 30px;
+    div {
+      gap: 18px;
+      h2 {
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .login-card {
+    position: static;
+    padding: 24px 16px;
+  }
+
+  .login-card.default {
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .login {
+    padding: 20px 0 0;
+  }
+
+  .login-card.imprint {
+    width: auto;
+    padding: 48px 28px;
+  }
+}

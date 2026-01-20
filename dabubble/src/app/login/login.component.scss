@@ -1,0 +1,127 @@
+@use "../../styles/variables" as *;
+@use "../../styles/shared-classes";
+
+.forgot-container {
+  display: flex;
+  justify-content: center;
+
+  button {
+    padding: 5px 15px;
+    border-radius: 30px;
+    border: none;
+    background-color: transparent;
+    color: $purple2;
+    font-family: "Nunito";
+    font-weight: 400;
+    font-size: 17px;
+    transition: all 125ms ease-in-out;
+    cursor: pointer;
+    z-index: 2;
+
+    &:hover {
+      font-weight: 500;
+      color: $purple1;
+      background-color: $lightblue;
+    }
+  }
+}
+
+.separator {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  .line {
+    width: 100%;
+    height: 1px;
+    background-color: $lightpurple;
+  }
+}
+
+.google-login {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  width: 100%;
+  gap: 20px;
+  background-color: $lightblue;
+  border: none;
+  border-radius: 100px;
+  padding: 11px 32px;
+  font-size: 18px;
+  color: $purple1;
+  transition: box-shadow 125ms ease-in-out, font-weight 125ms ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 0 1px $purple1;
+    font-weight: 700;
+  }
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+
+  button {
+    cursor: pointer;
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: 1px solid $purple2;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  button:nth-child(1) {
+    background-color: $purple1;
+    color: white;
+    transition: filter 125ms ease-in-out;
+    &:hover {
+      filter: opacity(80%);
+    }
+  }
+  button:nth-child(2) {
+    background-color: transparent;
+    color: $purple1;
+    transition: color 125ms ease-in-out, background-color 125ms ease-in-out;
+    &:hover {
+      color: white;
+      background-color: $purple1;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .google-login {
+    padding: 6px 32px;
+    gap: 10px;
+  }
+
+  .button-group {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .button-group {
+    gap: 10px;
+
+    button {
+      font-size: 16px;
+    }
+  }
+  .google-login {
+    font-size: 16px;
+    padding: 6px 16px;
+  }
+}
+
+@media (max-width: 344px){
+  .forgot-container {
+    padding-top: 19px;
+  }
+}

@@ -1,0 +1,58 @@
+<app-auth-layout>
+    <button [routerLink]="['/']" class="arrow-back">
+        <img src="/assets/icons/arrow_back.svg">
+    </button>
+
+    <div class="login-header">
+        <h1>Konto erstellen</h1>
+        <span>Mit deinem Namen und deiner E-Mail-Adresse hast du dein neues DABubble-Konto</span>
+    </div>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div class="input-group">
+            <div class="input-wrapper">
+                <div class="input-item">
+                    <img src="/assets/icons/login-person.svg">
+                    <input type="text" placeholder="Name und Nachname" formControlName="name" autocomplete="name">
+                </div>
+                @if (name?.invalid && (name?.touched || submitted)) {
+                <span class="error">Bitte schreiben Sie einen Namen.</span>
+                }
+            </div>
+
+            <div class="input-wrapper">
+                <div class="input-item">
+                    <img src="/assets/icons/login-mail.svg">
+                    <input type="text" placeholder="beispielname@email.com" formControlName="email"
+                        autocomplete="email">
+                </div>
+                @if (email?.invalid && (email?.touched || submitted)) {
+                <span class="error">*Diese E-Mail-Adresse ist leider ungültig.</span>
+                }
+            </div>
+
+            <div class="input-wrapper">
+                <div class="input-item">
+                    <img src="/assets/icons/login-lock.svg">
+                    <input type="password" placeholder="Passwort" formControlName="password"
+                        autocomplete="new-password">
+                </div>
+                @if (password?.invalid && (password?.touched || submitted)) {
+                <span class="error">Bitte geben Sie ein Passwort ein.</span>
+                }
+            </div>
+
+            <div class="agree">
+                <input type="checkbox" id="checkbox" formControlName="agree">
+                <label for="checkbox" class="custom-checkbox"></label>
+                <p>Ich stimme der <a routerLink="/privacy" target="_blank">Datenschutzerklärung</a> zu.</p>
+                @if (agree?.invalid && (agree?.touched || submitted)) {
+                <span class="error">Bitte stimmen Sie der Datenschutzerklärung zu.</span>
+                }
+            </div>
+        </div>
+
+        <div class="continue">
+            <button type="submit" [disabled]="signupForm.invalid">Weiter</button>
+        </div>
+    </form>
+</app-auth-layout>

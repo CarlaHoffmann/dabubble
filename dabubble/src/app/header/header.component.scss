@@ -1,0 +1,225 @@
+.header {
+  width: 100vw;
+  height: 95px;
+  box-sizing: border-box;
+  padding: 25px 45px 0 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 24px;
+
+  img {
+    height: 70px;
+  }
+}
+
+.searchbar-wrapper {
+  position: absolute;
+  display: flex;
+  width: calc(100vw - 800px);
+  margin-left: 362px;
+  margin-right: 526px;
+}
+
+.searchbar-container {
+  width: 100%;
+}
+
+.searchbar {
+  font-family: "Nunito";
+  width: 100%;
+  height: 70px;
+  box-sizing: border-box;
+  padding: 17.5px 45px;
+  border-radius: 42px;
+  border: none;
+
+  &:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.searchbar-container button {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchbar-container button img {
+  width: 35px;
+  height: 35px;
+}
+
+.user {
+  top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+
+  &:hover {
+    .user-name {
+      color: #535af1;
+    }
+    .hover-icon {
+      display: none;
+    }
+    .hover-icon-purple {
+      display: block;
+    }
+  }
+}
+
+.hover-icon-purple {
+  display: none;
+}
+
+.img-container {
+  position: relative;
+  height: 70px;
+}
+
+.user-img {
+  width: 70px;
+  border-radius: 42px;
+}
+
+.online-signal-header {
+  width: 16.67px;
+  height: 16.67px;
+  border: 2px solid #ffffff;
+  border-radius: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  top: 53px;
+  left: 53px;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+}
+
+.dialogue-backdrop {
+  position: fixed;
+  inset: 0; /* top, right, bottom, left: 0 */
+  background-color: rgba(0, 0, 0, 0.5); /* Abdunklung */
+  display: flex;
+  justify-content: flex-end; /* Panel rechts andocken */
+  align-items: flex-start; /* oben ausrichten */
+  z-index: 5;
+}
+
+.dialogue-backdrop2 {
+  position: fixed;
+  inset: 0; /* top, right, bottom, left: 0 */
+  background-color: rgba(0, 0, 0, 0.5); /* Abdunklung */
+  display: flex;
+  justify-content: flex-end; /* Panel rechts andocken */
+  align-items: flex-start; /* oben ausrichten */
+  z-index: 7;
+}
+
+.show-responsive {
+  display: none;
+}
+
+@media (max-width: 1445px) {
+  .searchBar {
+    width: 514px;
+    margin-right: 350px;
+  }
+}
+
+@media (max-width: 1010px) {
+  .hide-responsive {
+    display: none;
+  }
+
+  .logo.hide-responsive {
+    display: flex;
+  }
+
+  .show-responsive {
+    display: flex;
+  }
+
+  .responsive-logo.show-responsive {
+    display: none;
+  }
+
+  .back-to-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 880px) {
+  .header {
+    height: 80px;
+    padding-top: unset;
+    padding: 15px 16px;
+  }
+
+  .logo.hide-responsive {
+    display: none;
+  }
+
+  .responsive-logo.show-responsive {
+    display: flex;
+  }
+
+  .responsive-logo img{
+    height: 45px;
+    // position: absolute;
+    // top: 15px;
+    // left: 16px;
+  }
+
+  .back-to-menu {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+  }
+
+  .responsive-devspace {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .user {
+    top: 15px;
+    right: 45px;
+  }
+
+  .img-container {
+    height: 50px;
+  }
+
+  .user-img {
+    width: 50px;
+    border-radius: 42px;
+  }
+}
